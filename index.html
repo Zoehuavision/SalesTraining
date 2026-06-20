@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>远景新人报价指南</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --sky: #E8F4FD;
+    --blue: #3B9FE8;
+    --blue-dark: #1A7BC4;
+    --blue-light: #B3D9F7;
+    --mint: #E6F7F2;
+    --mint-acc: #2EBF91;
+    --amber: #FFF8E7;
+    --amber-acc: #F5A623;
+    --rose: #FEF0F0;
+    --rose-acc: #E8645A;
+    --lavender: #F3F0FF;
+    --lavender-acc: #7C5CBF;
+    --white: #FFFFFF;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-300: #D1D5DB;
+    --gray-500: #6B7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 32px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover: 0 16px 40px rgba(59,159,232,0.18), 0 6px 16px rgba(59,159,232,0.1);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+    background: linear-gradient(135deg, #EAF5FF 0%, #F0F8FF 40%, #E8F7F2 100%);
+    color: var(--gray-700);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #2563EB 0%, #3B9FE8 50%, #06B6D4 100%);
+    padding: 80px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 240px; height: 240px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    backdrop-filter: blur(8px);
+    animation: fadeInDown 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+    animation: fadeInDown 0.7s ease 0.1s both;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(90deg, #FFD86B, #FFB347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    animation: fadeInDown 0.8s ease 0.2s both;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    animation: fadeInDown 0.9s ease 0.3s both;
+  }
+
+  .stat {
+    text-align: center;
+    color: white;
+  }
+  .stat-num {
+    font-size: 32px;
+    font-weight: 900;
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    opacity: 0.75;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ===== NAV PILLS ===== */
+  .nav-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 28px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59,159,232,0.12);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .nav-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--gray-500);
+    background: var(--gray-100);
+    border: 1.5px solid transparent;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+  }
+  .nav-pill:hover {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59,159,232,0.3);
+  }
+  .nav-pill .icon { font-size: 15px; }
+
+  /* ===== MAIN CONTENT ===== */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .section-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .icon-blue { background: linear-gradient(135deg, #3B9FE8, #1A7BC4); }
+  .icon-mint { background: linear-gradient(135deg, #2EBF91, #1A9E77); }
+  .icon-amber { background: linear-gradient(135deg, #F5A623, #E8890D); }
+  .icon-rose { background: linear-gradient(135deg, #E8645A, #C9443A); }
+  .icon-lavender { background: linear-gradient(135deg, #7C5CBF, #5E40A0); }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gray-900);
+  }
+  .section-title small {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+
+  /* ===== CARD ===== */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1.5px solid var(--gray-100);
+    transition: all 0.25s ease;
+    cursor: default;
+    margin-bottom: 16px;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--blue-light);
+    transform: translateY(-3px);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* ===== STEP FLOW ===== */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    padding-bottom: 24px;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step:last-child .step-line { display: none; }
+
+  .step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 40px;
+  }
+
+  .step-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+    z-index: 1;
+  }
+
+  .step-line {
+    width: 2px;
+    flex: 1;
+    background: var(--gray-300);
+    margin-top: 6px;
+    border-radius: 1px;
+    min-height: 20px;
+  }
+
+  .step-content {
+    flex: 1;
+    padding-top: 6px;
+  }
+  .step-content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 6px;
+  }
+  .step-content p, .step-content li {
+    font-size: 14px;
+    color: var(--gray-500);
+    line-height: 1.7;
+  }
+  .step-content ul {
+    padding-left: 16px;
+    margin-top: 4px;
+  }
+
+  /* ===== TIPS / ALERT ===== */
+  .tip {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 14px;
+    border-left: 4px solid;
+    transition: all 0.2s;
+  }
+  .tip:hover { transform: translateX(4px); }
+
+  .tip-blue { background: #EBF5FF; border-color: var(--blue); }
+  .tip-mint { background: #E6F9F4; border-color: var(--mint-acc); }
+  .tip-amber { background: #FFF8E7; border-color: var(--amber-acc); }
+  .tip-rose { background: #FFF0EF; border-color: var(--rose-acc); }
+  .tip-lavender { background: #F3F0FF; border-color: var(--lavender-acc); }
+
+  .tip-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .tip-body { flex: 1; }
+  .tip-body strong { display: block; font-size: 14px; font-weight: 600; margin-bottom: 3px; color: var(--gray-900); }
+  .tip-body p, .tip-body ul { font-size: 13.5px; color: var(--gray-500); line-height: 1.65; }
+  .tip-body ul { padding-left: 14px; margin-top: 4px; }
+
+  /* ===== TABLE ===== */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 16px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 14px;
+  }
+  thead th {
+    background: linear-gradient(135deg, #3B9FE8, #1A7BC4);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--gray-100);
+    transition: background 0.18s;
+  }
+  tbody tr:hover { background: var(--sky); }
+  td {
+    padding: 12px 16px;
+    color: var(--gray-700);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  td:first-child { font-weight: 500; color: var(--blue-dark); }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, #3B9FE8 0%, #1A7BC4 100%);
+    color: white;
+    border-radius: var(--radius);
+    padding: 28px 28px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 140px; height: 140px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .highlight-box h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .highlight-box p, .highlight-box li {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.7;
+  }
+  .highlight-box ul { padding-left: 16px; }
+
+  /* ===== FORMULA CARD ===== */
+  .formula {
+    background: linear-gradient(135deg, #FFF8E7, #FFF3D0);
+    border: 2px solid #F5A623;
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    text-align: center;
+    margin: 16px 0;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--amber-acc);
+    margin-bottom: 8px;
+  }
+  .formula-eq {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+  }
+  .formula-example {
+    font-size: 13px;
+    color: var(--gray-500);
+  }
+
+  /* ===== PAYMENT METHODS ===== */
+  .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .payment-card {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    border: 1.5px solid var(--gray-100);
+    transition: all 0.22s;
+    text-align: center;
+  }
+  .payment-card:hover {
+    border-color: var(--blue);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+  .payment-card .pay-icon { font-size: 28px; margin-bottom: 10px; }
+  .payment-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--gray-900); }
+  .payment-card p { font-size: 12.5px; color: var(--gray-500); line-height: 1.5; }
+
+  /* ===== TAG ===== */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 2px;
+  }
+  .tag-blue { background: #DBEAFE; color: #1D4ED8; }
+  .tag-mint { background: #D1FAE5; color: #065F46; }
+  .tag-amber { background: #FEF3C7; color: #92400E; }
+  .tag-rose { background: #FEE2E2; color: #991B1B; }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    background: linear-gradient(135deg, #FEF0F0, #FFF5F5);
+    border: 1.5px solid #FECACA;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 12px 0;
+  }
+  .callout-icon { font-size: 20px; flex-shrink: 0; }
+  .callout p { font-size: 14px; color: #7F1D1D; line-height: 1.65; font-weight: 500; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-top: 1px solid var(--gray-100);
+    margin-top: 40px;
+  }
+  .footer-logo {
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #3B9FE8, #1A7BC4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+  .footer p { font-size: 13px; color: var(--gray-500); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .hero-stats { gap: 20px; }
+    .nav-pills { gap: 7px; }
+    .nav-pill { padding: 7px 13px; font-size: 12px; }
+    .payment-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>⚡</span>
+    <span>Vision Machinery 内部培训资料</span>
+  </div>
+  <h1>新人报价<span>作战手册</span></h1>
+  <p class="hero-sub">从客户问价到收款发货，每一步都有章可循。读完这份指南，你就准备好了 🚀</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">4</span>
+      <span class="stat-label">大核心模块</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">15+</span>
+      <span class="stat-label">年出口经验</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">全球</span>
+      <span class="stat-label">客户覆盖</span>
+    </div>
+  </div>
+</section>
+
+<!-- NAV PILLS -->
+<nav class="nav-pills">
+  <a href="#sec-client" class="nav-pill"><span class="icon">👤</span>客户接待</a>
+  <a href="#sec-price" class="nav-pill"><span class="icon">💰</span>找价格</a>
+  <a href="#sec-shipping" class="nav-pill"><span class="icon">✈️</span>运费注意</a>
+  <a href="#sec-payment" class="nav-pill"><span class="icon">💳</span>付款方式</a>
+  <a href="#sec-delivery" class="nav-pill"><span class="icon">📦</span>货期</a>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- SECTION 0: 快速开始流程 -->
+  <section class="section" id="sec-client">
+    <div class="section-header">
+      <div class="section-icon icon-blue">👤</div>
+      <div class="section-title">
+        客户来了，先做这几步
+        <small>接到询价不要慌，流程走清楚</small>
+      </div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num" style="background:linear-gradient(135deg,#3B9FE8,#1A7BC4)">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h4>获取手机号，先去孚盟查重</h4>
+          <p>有潜在客户来问价，第一步：拿到手机号，去孚盟系统查有没有重复。</p>
+          <ul>
+            <li>有重复 → 联系对应业务员对接，不要自己继续跟进</li>
+            <li>没重复 → 新建为自己的客户，正式开始跟进</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num" style="background:linear-gradient(135deg,#2EBF91,#1A9E77)">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h4>做好客户备注 + WhatsApp 标签</h4>
+          <p>哪怕是刚来问价的，也要马上建好备注，方便后续触达。</p>
+          <div class="tip tip-mint">
+            <span class="tip-icon">🏷️</span>
+            <div class="tip-body">
+              <strong>备注格式参考</strong>
+              <p>A类 + 国家 + 名字 + 行业 + 感兴趣产品<br>
+              例：<strong>A类 墨西哥 Carlos 发电机维修 AVR</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num" style="background:linear-gradient(135deg,#F5A623,#E8890D)">3</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h4>做基础背调，了解客户是谁</h4>
+          <p>新客户来了先聊聊，别急着报价。了解对方是什么类型的买家，后续才能更精准沟通。</p>
+          <div class="card-grid" style="margin-top:12px">
+            <div class="card" style="padding:16px">
+              <div style="font-size:11px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">可以问的问题</div>
+              <ul style="padding-left:14px;font-size:13.5px;color:var(--gray-500);line-height:1.85">
+                <li>你们公司做什么业务？</li>
+                <li>是终端客户还是经销商？</li>
+                <li>做柴油发电机相关行业吗？</li>
+                <li>配件批发 / 机组制造 / 维修维护？</li>
+                <li>之前有没有从中国进口过？</li>
+                <li>有没有货运代理，还是需要我们安排？</li>
+              </ul>
+            </div>
+            <div class="card" style="padding:16px">
+              <div style="font-size:11px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">顺带输出公司背书</div>
+              <ul style="padding-left:14px;font-size:13.5px;color:var(--gray-500);line-height:1.85">
+                <li>有工厂，20+ 年行业经验</li>
+                <li>客户遍布全球</li>
+                <li>可以发工厂视频、仓库视频</li>
+                <li>建立初步信任再谈价格</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num" style="background:linear-gradient(135deg,#E8645A,#C9443A)">4</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h4>确认型号，再报价</h4>
+          <p>尽量让客户提供准确零件号。如果只有图片，用以图搜图找出参考信息，发给客户确认后再报价。</p>
+          <div class="callout">
+            <span class="callout-icon">🚫</span>
+            <p>不要一上来就报价！没搞清楚客户是谁、要什么，报了价也很容易聊死。先聊人，再聊货。</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 1: 价格去哪找 -->
+  <section class="section" id="sec-price">
+    <div class="section-header">
+      <div class="section-icon icon-mint">💰</div>
+      <div class="section-title">
+        产品价格去哪里找
+        <small>不同产品类型，查价渠道不一样</small>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>产品分类</th>
+            <th>具体产品举例</th>
+            <th>查价渠道</th>
+            <th>注意事项</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="tag tag-blue">A 类</span><br>
+              常规品
+            </td>
+            <td>AVR、代替版控制器、传感器、电磁阀</td>
+            <td>网店管家</td>
+            <td>绝大部分常规品都在这里，优先查</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tag tag-mint">B 类</span><br>
+              原装品
+            </td>
+            <td>Deep Sea、ComAp、SmartGen</td>
+            <td>
+              Deep Sea → 微信询价群<br>
+              ComAp → 亿方云 / 询价群<br>
+              SmartGen → 网店管家
+            </td>
+            <td>新人刚开始对 B 类要多核实价格，别直接报</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tag tag-amber">C 类</span><br>
+              动力配件
+            </td>
+            <td>垫片、启动器、活塞、燃油喷射泵、交流发电机</td>
+            <td>找采购员询价（到询价群）</td>
+            <td>需提供客户要的具体数量 + 零件号</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip tip-blue">
+      <span class="tip-icon">💡</span>
+      <div class="tip-body">
+        <strong>报价时记得配图</strong>
+        <p>报价时尽量附上产品图片，客户看得更直观，也能减少误解，提高成单率。B 类原装产品可以在网店管家找图片。</p>
+      </div>
+    </div>
+
+    <div class="tip tip-amber">
+      <span class="tip-icon">📦</span>
+      <div class="tip-body">
+        <strong>报价前先问数量</strong>
+        <p>报价前尽量先问清楚客户要多少数量。数量影响单价，也影响运费计算方式，别等报了价再改。</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 2: 运费 -->
+  <section class="section" id="sec-shipping">
+    <div class="section-header">
+      <div class="section-icon icon-amber">✈️</div>
+      <div class="section-title">
+        空运报价注意点
+        <small>小单几乎都走空运快递，这些坑要提前知道</small>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h3>✈️ 小订单默认走空运快递</h3>
+      <p>99% 的小订单都走 <strong>UPS / DHL / FedEx</strong> 空运快递发货，必须掌握以下两个核心知识点。</p>
+    </div>
+
+    <div style="margin-bottom:24px">
+      <div class="tip tip-rose" style="margin-bottom:12px">
+        <span class="tip-icon">⚠️</span>
+        <div class="tip-body">
+          <strong>敏感物品会影响运费，必须提前核查</strong>
+          <ul>
+            <li>带牌 / 仿牌产品</li>
+            <li>带磁 / 带电产品</li>
+            <li>木箱包装</li>
+            <li>喷油泵（可能有油残留）</li>
+            <li>形状特殊（一边特别长）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <div class="card" style="padding:18px; border-left:4px solid #3B9FE8">
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:10px;color:var(--gray-900)">🔘 控制器注意点</h4>
+          <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7">注意是否带电或带牌</p>
+        </div>
+        <div class="card" style="padding:18px; border-left:4px solid #2EBF91">
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:10px;color:var(--gray-900)">⚡ AVR 注意点</h4>
+          <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7">
+            注意是否带牌（原装）<br>
+            是否有大电容（如 R448、R449、VR6）
+          </p>
+        </div>
+      </div>
+
+      <div class="tip tip-lavender" style="margin-top:12px">
+        <span class="tip-icon">🔍</span>
+        <div class="tip-body">
+          <strong>如何判断产品带不带牌？</strong>
+          <p>查询网址：<code style="background:#eee;padding:2px 6px;border-radius:4px;font-size:12px">http://202.127.48.145:8888/zscq/search/jsp/vBrandSearchIndex.jsp</code></p>
+          <p style="margin-top:6px">我们常见产品中：<br>
+          <span class="tag tag-rose">带牌</span> ComAp、Stamford、Marathon 等（海关备案品牌）<br>
+          <span class="tag tag-mint">不带牌</span> SmartGen、Aisikai</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top:32px;margin-bottom:16px">
+      <div style="font-size:20px">📐</div>
+      <div style="font-size:16px;font-weight:700;color:var(--gray-900)">抛货是什么？怎么算？</div>
+    </div>
+
+    <div class="tip tip-amber">
+      <span class="tip-icon">💡</span>
+      <div class="tip-body">
+        <strong>抛货 = 体积重 > 实际重量</strong>
+        <p>空运计费按两者中较重的那个算，体积大但实物轻的货物会被"抛货"，运费直接变贵。</p>
+      </div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-title">✈️ 空运体积重计算公式</div>
+      <div class="formula-eq">体积重 = 长 × 宽 × 高（cm）÷ 5000</div>
+      <div class="formula-example">
+        举例：实际重 5kg，尺寸 50×40×30cm<br>
+        体积重 = 50×40×30 ÷ 5000 = <strong>12kg</strong><br>
+        最终计费重量为 12kg，运费按 12kg 收 ⚠️
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 3: 付款方式 -->
+  <section class="section" id="sec-payment">
+    <div class="section-header">
+      <div class="section-icon icon-lavender">💳</div>
+      <div class="section-title">
+        我们支持哪些付款方式
+        <small>客户问到了，这样回答</small>
+      </div>
+    </div>
+
+    <div class="payment-grid">
+      <div class="payment-card">
+        <div class="pay-icon">🏦</div>
+        <h4>T/T 银行转账</h4>
+        <p>银行卡收款会有手续费，手续费需要客户承担</p>
+      </div>
+      <div class="payment-card">
+        <div class="pay-icon">📱</div>
+        <h4>微信 / 支付宝</h4>
+        <p>提供公司收款码，适合有中国账户的客户</p>
+      </div>
+      <div class="payment-card">
+        <div class="pay-icon">💻</div>
+        <h4>阿里巴巴在线支付</h4>
+        <p>通过国际站创建付款链接，客户可刷信用卡支付。注意：需在总价上加 <strong>5%~7%</strong> 手续费</p>
+      </div>
+      <div class="payment-card">
+        <div class="pay-icon">🌐</div>
+        <h4>西联汇款</h4>
+        <p>提供西联账户给客户，使用频率较少</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 4: 货期 -->
+  <section class="section" id="sec-delivery">
+    <div class="section-header">
+      <div class="section-icon icon-rose">📦</div>
+      <div class="section-title">
+        货期怎么回复客户
+        <small>不同情况，说法不一样</small>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num" style="background:linear-gradient(135deg,#2EBF91,#1A9E77)">✓</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <h4>空运 + 有现货 + 客户不急</h4>
+          <p>可以回复客户：<strong>收到付款后 8~10 个工作日</strong>发货。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num" style="background:linear-gradient(135deg,#F5A623,#E8890D)">!</div>
+        </div>
+        <div class="step-content">
+          <h4>原装品 / 动力配件 / 静音配件（仓库无现货）</h4>
+          <p>货期<strong>必须先跟采购确认</strong>，不要自己随便报时间给客户，避免后续扯皮。</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SUMMARY CARD -->
+  <section class="section">
+    <div class="highlight-box" style="background:linear-gradient(135deg,#2EBF91,#1A7C60)">
+      <h3>🎯 记住这个顺序，报价不踩坑</h3>
+      <ul style="line-height:2;margin-top:8px">
+        <li>① 查重 → 建客户 → 做备注标签</li>
+        <li>② 背调客户，聊聊再报价</li>
+        <li>③ 确认型号 + 数量后，按类型找正确报价渠道</li>
+        <li>④ 报价带图，核查敏感品 + 算好运费</li>
+        <li>⑤ 货期先确认现货再告知客户</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Vision Machinery & Electric Co., Ltd</div>
+  <p>visionchn.com · sales1@visionchn.com · 内部培训资料，请勿外传</p>
+</footer>
+
+<script>
+  // Scroll-triggered reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+  // Active nav highlight
+  const navPills = document.querySelectorAll('.nav-pill');
+  const sections = document.querySelectorAll('section[id]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navPills.forEach(p => {
+      p.style.background = p.getAttribute('href') === '#' + current
+        ? 'var(--blue)' : '';
+      p.style.color = p.getAttribute('href') === '#' + current
+        ? 'white' : '';
+      p.style.borderColor = p.getAttribute('href') === '#' + current
+        ? 'var(--blue)' : 'transparent';
+    });
+  });
+</script>
+</body>
+</html>
